@@ -2,7 +2,7 @@ node=int(input())
 node_graph={i:[] for i in "ABCDEFGHIJKLMNOPQRSTUVWXYZ"}
 
 for _ in range(node):
-    node, left, right = map(str,input().split())
+
     node_graph[node] += [left,right]
 
 #preorder
