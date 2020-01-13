@@ -3,7 +3,7 @@ def dfs(v):
  V[v]=True
  print(v,end=' ')
  for i in range(1,n+1):
-  if L[v][i] and    not V[i]: dfs(i)
+  if L[v][i] and not V[i]: dfs(i)
 '''
 def bfs(v):
  global n,m,L,V
