@@ -1,14 +1,14 @@
-from queue import Queue
+import copy
 def bfs(graph, start_node):
-    visit=set()
-    q=Queue()
-    q.put(start_node)
-    while q.qsize()>0:
-        node=q.get()
+    visit=[]
+    q=[start_node]
+    while q:
+        node=q[0]
+        q.remove(q[0])
         if node not in visit:
-            visit.add(node)
-            for NextNode in graph[node]:
-                q.put(NextNode)
+            visit.append(node)
+            q.extend(graph[node])
+
     return visit
 
 def dfs(graph, start_node):
@@ -19,8 +19,9 @@ def dfs(graph, start_node):
         node = stack.pop()
         if node not in visit:
             visit.append(node)
-            graph[node].reverse()
-            stack.extend(graph[node])
+            #arr=copy.deepcopy(graph[node])
+            #arr.reverse()
+            stack.extend(sorted(graph[node],reverse=True))
 
     return visit
 
