@@ -1,16 +1,19 @@
-from queue import Queue
+def bfs():
+    bfs(graph,'A')
 def bfs(graph, start_node):
-    visit=set()
-    q=Queue()
-    q.put(start_node)
-    while q.qsize()>0:
-        node=q.get()
-        if node not in visit:
-            visit.add(node)
-            for NextNode in graph[node]:
-                q.put(NextNode)
-    return visit
+    visit=[]
+    queue=[start_node]
 
+    while queue:
+        node=queue.pop(0)
+        if node not in visit:
+            visit.append(node)
+            #arr=graph[node]
+            #arr.reverse()
+            queue.extend(graph[node])
+    return visit
+def dfs():
+    dfs(graph,'A')
 def dfs(graph, start_node):
     visit = list()
     stack = [start_node]
@@ -19,10 +22,12 @@ def dfs(graph, start_node):
         node = stack.pop()
         if node not in visit:
             visit.append(node)
-            graph[node].reverse()
-            stack.extend(graph[node])
+            arr=graph[node]
+            arr.reverse()
+            stack.extend(arr)
 
     return visit
+
 
 if __name__ == "__main__":
     graph = {
